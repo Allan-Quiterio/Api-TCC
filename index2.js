@@ -50,11 +50,11 @@ app.get('/fornecedores/:id', (req, res, next) => {
 app.post('/produtos', (req, res, next) => {
   try {
     if (req.body.nome) {
-      const { nome, qtdeEstoque, preco, _idFornFK } = req.body; //Desestruturação
+      const { nome, qtdeEstoque, preco, _idFornFK } = req.body;
       const id = produtos.length > 0 ? produtos[produtos.length - 1]._id + 1 : 1;
-      // Instanciando objeto da classe Produto
+
       const novoProduto = new Produto(id, nome, qtdeEstoque, preco, _idFornFK);
-      // Adicionando o objeto instanciado no final do vetor produtos
+
       produtos.push(novoProduto);
       res.json({ message: 'Produto cadastrado com sucesso!' });
     } else {
